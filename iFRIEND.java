@@ -2,12 +2,12 @@ import java.util.*;
 import java.time.LocalDate;
 
 class Contact{
-	String contactId;
-	String name;
-	String phoneNo;
-	String company;
-	int salary;
-	String dob;
+	private String contactId;
+	private String name;
+	private String phoneNo;
+	private String company;
+	private int salary;
+	private String dob;
 	
 	Contact(){}
 	
@@ -21,9 +21,43 @@ class Contact{
 	}
 	
 	public String toString(){
-		return contactId+"\t"+name+"\t"+phoneNo+"\t"+company+"\t"+salary+"\t"+dob;		
+		return contactId+"\t\t"+name+"\t\t"+phoneNo+"\t\t"+company+"\t\t"+salary+"\t\t"+dob;		
 	}
-
+	
+	public void setContactId(String contactId){
+		this.contactId =contactId;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
+	public String getName(){
+		return name;
+	}
+	public void setPhoneNo(String phoneNo){
+		this.phoneNo = phoneNo;
+	}
+	public String getPhoneNo(){
+		return phoneNo;
+	}
+	public void setCompany(String company){
+		this.company = company;
+	}
+	
+	public void setSalary(int salary){
+		this.salary = salary;
+	}
+	
+	public int getSalary(){
+		return salary;
+	}
+	
+	public void setDob(String dob){
+		this.dob = dob;
+	}
+	
+	public String getDob(){
+		return dob;
+	}
 }
 class iFRIEND{
 	
@@ -259,7 +293,7 @@ class iFRIEND{
 		System.out.println("\t=============");
 		
 		System.out.print(" Input new name : ");
-		cnt[index].name= input.next();
+		cnt[index].setName(input.next());
 		
 		System.out.println("\t Name has been updated succesfully....");
 	}
@@ -280,7 +314,7 @@ class iFRIEND{
 				System.out.println("\t Invalid Phone number!\n");	
 			}
 		}while(!validatePhoneNO(newPhoneNo));
-		cnt[index].phoneNo = newPhoneNo;
+		cnt[index].setPhoneNo(newPhoneNo);
 		System.out.println("\t Phone number has been updated succesfully....");
 		
 	}
@@ -292,7 +326,7 @@ class iFRIEND{
 		System.out.println("\t================");
 		
 		System.out.print(" Input new Company : ");
-		cnt[index].company= input.next();
+		cnt[index].setCompany(input.next());
 		
 		System.out.println("\t Company has been updated succesfully....");
 	}
@@ -315,7 +349,7 @@ class iFRIEND{
 				}
 		}while(!validateSalary(newSalary));
 	
-		cnt[index].salary = newSalary;
+		cnt[index].setSalary(newSalary);
 		System.out.println("\t Salary has been updated succesfully....");
 	}
 	
@@ -396,9 +430,12 @@ class iFRIEND{
 		System.out.print("\nSearch Contact by Name or Phone Number : ");
 		String searchOption = input.next();
 		int index = -1;
-			
+
+
+		System.out.println("\nContact Id \t Name \t\t Phone No \t\tCompany \tSalary    \tDate of birth");	
+		System.out.println("-----------------------------------------------------------------------------------------------------");
 		for(int i=0; i<cnt.length; i++){
-			if((cnt[i].contactId).equals(searchOption) || (cnt[i].name).equals(searchOption)){
+			if((cnt[i].getPhoneNo()).equals(searchOption) || (cnt[i].getName()).equals(searchOption)){
 				System.out.println(cnt[i].toString());
 				index = i;
 			}
@@ -460,7 +497,7 @@ class iFRIEND{
 				for(int i = temp.length - 1; i > 0; i--){
 					for(int j = 0; j < i; j++){
 
-						if(temp[j].salary > temp[j + 1].salary){
+						if(temp[j].getSalary() > temp[j + 1].getSalary()){
 
 							Contact t = temp[j];
 							temp[j] = temp[j + 1];
@@ -477,7 +514,7 @@ class iFRIEND{
 				for(int i = temp.length - 1; i > 0; i--){
 					for(int j = 0; j < i; j++){
 
-						if(temp[j].salary < temp[j + 1].salary){
+						if(temp[j].getSalary() < temp[j + 1].getSalary()){
 
 							Contact t = temp[j];
 							temp[j] = temp[j + 1];
@@ -503,13 +540,13 @@ class iFRIEND{
         for(int i = temp.length - 1; i > 0; i--){
 			for(int j = 0; j < i; j++){
 				//  Year
-				if ((temp[j].dob.charAt(0) > temp[j + 1].dob.charAt(0))
-				|| (temp[j].dob.charAt(0) == temp[j + 1].dob.charAt(0))
-				&& (temp[j].dob.charAt(1) > temp[j + 1].dob.charAt(1))
-				|| (temp[j].dob.charAt(1) == temp[j + 1].dob.charAt(1))
-				&&(temp[j].dob.charAt(2) > temp[j + 1].dob.charAt(2))
-				|| (temp[j].dob.charAt(2) == temp[j + 1].dob.charAt(2)
-				&& (temp[j].dob.charAt(3) > temp[j + 1].dob.charAt(3)))) {
+				if ((temp[j].getDob().charAt(0) > temp[j + 1].getDob().charAt(0))
+				|| (temp[j].getDob().charAt(0) == temp[j + 1].getDob().charAt(0))
+				&& (temp[j].getDob().charAt(1) > temp[j + 1].getDob().charAt(1))
+				|| (temp[j].getDob().charAt(1) == temp[j + 1].getDob().charAt(1))
+				&&(temp[j].getDob().charAt(2) > temp[j + 1].getDob().charAt(2))
+				|| (temp[j].getDob().charAt(2) == temp[j + 1].getDob().charAt(2)
+				&& (temp[j].getDob().charAt(3) > temp[j + 1].getDob().charAt(3)))) {
 
 					Contact t = temp[j];
 					temp[j] = temp[j + 1];
