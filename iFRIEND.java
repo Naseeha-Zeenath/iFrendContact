@@ -433,22 +433,83 @@ class iFRIEND{
 				shortprint();
 				break;
 			case 3:
-				//shortByBirthday();
+				shortByBirthday();
 				shortprint();
 		}
 		
 	}
 	public static void shortBySalary(){
+		Scanner input = new Scanner(System.in);
+		System.out.println("+--------------------------------------+");
+		System.out.println("|          Sorting by Salary           |");
+		System.out.println("+--------------------------------------+\n");
+		System.out.println("\t [1]Assending order    : ");
+		System.out.println("\t [2]Dissending order    : ");
+		System.out.print("\nEnter an option to continue -> ");
+		int shortOption = input.nextInt();
+		
+		Contact[] temp = new Contact[cnt.length]; 
+		temp[temp.length-1] = new Contact();
+				
+		switch(shortOption){
+			case 1:
+			
+				for(int i =0; i<cnt.length; i++){
+					temp[i] = cnt[i];
+				}
+				for(int i = temp.length - 1; i > 0; i--){
+					for(int j = 0; j < i; j++){
+
+						if(temp[j].salary > temp[j + 1].salary){
+
+							Contact t = temp[j];
+							temp[j] = temp[j + 1];
+							temp[j + 1] = t;
+
+						}
+					}
+				}
+				break;
+			case 2: 
+				for(int i =0; i<cnt.length; i++){
+					temp[i] = cnt[i];
+				}
+				for(int i = temp.length - 1; i > 0; i--){
+					for(int j = 0; j < i; j++){
+
+						if(temp[j].salary < temp[j + 1].salary){
+
+							Contact t = temp[j];
+							temp[j] = temp[j + 1];
+							temp[j + 1] = t;
+
+						}
+					}
+				}
+				break;
+		}
+		cnt = temp;
+		
+	}
+	
+	public static void shortByBirthday(){
 		Contact[] temp = new Contact[cnt.length]; 
 		temp[temp.length-1] = new Contact();
 		
 		for(int i =0; i<cnt.length; i++){
 			temp[i] = cnt[i];
 		}
-		for(int i = temp.length - 1; i > 0; i--){
+        
+        for(int i = temp.length - 1; i > 0; i--){
 			for(int j = 0; j < i; j++){
-
-				if(temp[j].salary > temp[j + 1].salary){
+				//  Year
+				if ((temp[j].dob.charAt(0) > temp[j + 1].dob.charAt(0))
+				|| (temp[j].dob.charAt(0) == temp[j + 1].dob.charAt(0))
+				&& (temp[j].dob.charAt(1) > temp[j + 1].dob.charAt(1))
+				|| (temp[j].dob.charAt(1) == temp[j + 1].dob.charAt(1))
+				&&(temp[j].dob.charAt(2) > temp[j + 1].dob.charAt(2))
+				|| (temp[j].dob.charAt(2) == temp[j + 1].dob.charAt(2)
+				&& (temp[j].dob.charAt(3) > temp[j + 1].dob.charAt(3)))) {
 
 					Contact t = temp[j];
 					temp[j] = temp[j + 1];
@@ -456,19 +517,10 @@ class iFRIEND{
 
 				}
 			}
-        }
+		}
 		
 		cnt = temp;
-
-		System.out.println("+------------+--------------+--------------+--------------+------------+--------------+");
-		for(int i=0; i<cnt.length; i++){
-			System.out.println(cnt[i].toString());
-		}
-		System.out.println("+------------+--------------+--------------+--------------+------------+--------------+");
-		
 	}
-	
-
 	
 	public static void shortprint(){
 		Scanner input = new Scanner(System.in);
